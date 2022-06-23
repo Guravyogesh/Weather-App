@@ -4,26 +4,25 @@
     <p class="close-btn" aria-label="Close">X</p>
   </div>
   <div class="main-contain">
-    <div class="city"><strong>City</strong></div>
+    <div class="city"><strong>Select City</strong></div>
     <div class="row">
       <div class="col-md-12 dropdown">
-        <select class="form-select dropdown-list minimal" [(ngModel)]="dropdownSelect">
-          <option value="" disabled="disabled">--Select City--</option>
+        <select class="form-select dropdown-list minimal" [(ngModel)]="dropdownSelect" (click)="weathetResponseInfo()">
+          <!-- <option value="" disabled="disabled">--Select City--</option> -->
           <option *ngFor="let city of cityList">{{city}}</option>         
         </select>
       </div>
     </div>    
     <div class="row image" >
       <div class="column" *ngFor="let info of featchedData">
-        <span class="day">{{info.valid_date | date:'EEEE'}}</span>
-        <p class="date">{{info.valid_date | date:'MMM d'}}</p>        
+        <span class="day"><b>{{info.valid_date | date:'EEEE'}}</b></span>
+        <p class="date"><b>{{info.valid_date | date:'MMM d'}}</b></p>        
         <img [src]="getIconUrl(info)" class="image_icon">
         <p class="temp">{{info.temp | number:'2.0-0'}}&#176;C</p>
       </div>     
     </div>
     <div class="apply-btn">
-      <input class="btn btn-danger" type="submit" value="Apply" (click)="weathetResponseInfo()">
+      <input class="btn btn-danger" type="submit" value="Apply">
     </div>
   </div>
-
 <router-outlet></router-outlet>
